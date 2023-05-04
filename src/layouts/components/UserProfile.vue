@@ -1,17 +1,33 @@
 <script setup lang="ts">
-import type { Anchor } from 'vuetify/lib/components'
-import avatar1 from '@/assets/images/avatars/avatar-1.png'
+  import type { Anchor } from 'vuetify/lib/components'
+  import avatar1 from '@/assets/images/avatars/avatar-1.png'
+  import { computed, onMounted, reactive, ref, watch } from "vue";
+  import { useRouter, useRoute } from 'vue-router'
+  import { mapGetters, mapState, useStore } from 'vuex';
+  import validator from 'validator';
 
-const avatarBadgeProps = {
-  dot: true,
-  location: 'bottom right' as Anchor,
-  offsetX: 3,
-  offsetY: 3,
-  color: 'success',
-  bordered: true,
-}
+  // GLOBAL CONST
+  const router = useRouter()
+  const route = useRoute()
+  const store = useStore()
+  const user = computed(() => store.state.auth.authData)
+  const actionLogout = () => store.dispatch('auth/logoutUser')
+
+  const avatarBadgeProps = {
+    dot: true,
+    location: 'bottom right' as Anchor,
+    offsetX: 3,
+    offsetY: 3,
+    color: 'success',
+    bordered: true,
+  }
+
+  async function logout() {
+    await actionLogout()
+  }
+
 </script>
-
+ 
 <template>
   <VBadge v-bind="avatarBadgeProps">
     <VAvatar
@@ -55,72 +71,18 @@ const avatarBadgeProps = {
 
           <VDivider class="my-2" />
 
-          <!-- 👉 Profile -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon
-                class="me-2"
-                icon="mdi-account-outline"
-                size="22"
-              />
-            </template>
-
-            <VListItemTitle>Profile</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 Settings -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon
-                class="me-2"
-                icon="mdi-cog-outline"
-                size="22"
-              />
-            </template>
-
-            <VListItemTitle>Settings</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 Pricing -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon
-                class="me-2"
-                icon="mdi-currency-usd"
-                size="22"
-              />
-            </template>
-
-            <VListItemTitle>Pricing</VListItemTitle>
-          </VListItem>
-
-          <!-- 👉 FAQ -->
-          <VListItem link>
-            <template #prepend>
-              <VIcon
-                class="me-2"
-                icon="mdi-help-circle-outline"
-                size="22"
-              />
-            </template>
-
-            <VListItemTitle>FAQ</VListItemTitle>
-          </VListItem>
-
-          <!-- Divider -->
-          <VDivider class="my-2" />
 
           <!-- 👉 Logout -->
-          <VListItem to="/login">
+          <VListItem @click="logout" class="cursor-pointer">
             <template #prepend>
               <VIcon
-                class="me-2"
+                class="me-2 text-error"
                 icon="mdi-logout-variant"
                 size="22"
               />
             </template>
 
-            <VListItemTitle>Logout</VListItemTitle>
+            <VListItemTitle class="text-error">Se déconnecter</VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>

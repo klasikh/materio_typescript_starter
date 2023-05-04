@@ -33,7 +33,21 @@ export default defineConfig({
     }),
     DefineOptions(),
   ],
-  define: { 'process.env': {} },
+  define: { 
+    'process.env': {
+      APP_MODE: 'dev',
+      BACK_END_DEV_URI: 'http://localhost:4000/graphql',
+      FRONT_END_DEV: 'http://localhost:8080',
+      BACK_END_PROD_URI: 'https://impottva-server.onrender.com/graphql',
+      BACK_END_URI: 'http://localhost:4000/graphql',
+      REST_API_PORT: '4000',
+      EMAIL_JS_SERVICE: 'service_dy7692t',
+      EMAIL_JS_KEY: '5k2MPmd8tQYpBR97T',
+      EMAIL_JS_SUBSCRIPTION_TEMPLATE: 'template_csodw8i',
+      EMAIL_JS_INVITATION_TEMPLATE: 'template_ydj1zrn',
+      APP_SOCKET_ENDPOINT: 'http://localhost:3000',
+    }  
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
