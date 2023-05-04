@@ -6,6 +6,7 @@ import NotFoundPage from '@/pages/[...all].vue'
 import Home from '@/pages/index.vue'
 import Dashboard from "@/pages/dashboard.vue";
 import BeginPayment from "@/pages/beginPayment.vue";
+import RegisterSuccess from "@/pages/registerSuccess.vue";
 import store from "@/store";
 import axios from 'axios';
 
@@ -14,6 +15,7 @@ const routes = [
   // { path: "/login", component: Login, meta: { requiredAuth: false } },
   { path: "/mon_espace", name: "dashboard", component: Dashboard, meta: { title: 'Mon espace', requiredAuth: true } },
   { path: "/payer_tfu", name: "beginPayment", component: BeginPayment, meta: { title: 'Commencer un paiement', requiredAuth: true } },
+  { path: "/register_success", name: "registerSuccess", component: RegisterSuccess, meta: { title: 'Inscription réussie', requiredAuth: false } },
   { path: "/:pathMatch(.*)*", component: NotFoundPage, meta: { title: 'Erreur 404', requiredAuth: false } },
 ];
 

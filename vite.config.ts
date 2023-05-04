@@ -39,7 +39,7 @@ export default defineConfig({
       BACK_END_DEV_URI: 'http://localhost:4000/graphql',
       FRONT_END_DEV: 'http://localhost:8080',
       BACK_END_PROD_URI: 'https://impottva-server.onrender.com/graphql',
-      BACK_END_URI: 'http://localhost:4000/graphql',
+      BACK_END_URI: 'https://impottva-server.onrender.com/graphql',
       REST_API_PORT: '4000',
       EMAIL_JS_SERVICE: 'service_dy7692t',
       EMAIL_JS_KEY: '5k2MPmd8tQYpBR97T',

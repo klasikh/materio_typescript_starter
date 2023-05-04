@@ -19,6 +19,8 @@
         { icon: 'mdi-download', title: 'Télécharger la quittance TFU' },
     ]
 
+    const user_token = localStorage.getItem('access_token')
+
 </script>
 
 <template>
@@ -44,7 +46,7 @@
           {{ item.title }}
         </v-btn>
               
-        <UserProfile v-if="user" />
+        <UserProfile v-if="user && user_token" />
 
       </v-toolbar-items>
       <v-menu class="hidden-md-and-up">

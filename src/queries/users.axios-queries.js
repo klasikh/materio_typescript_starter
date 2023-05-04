@@ -144,7 +144,7 @@ export const AXIOS_LOGIN_USER = `
     `;
 
 export const AXIOS_REGISTER_USER = `
-    mutation($ifunumber: String!, $phonenumber: String!, $email: String, $password: String!, isActivated: Boolean ) {
+    mutation($ifunumber: String!, $phonenumber: String!, $email: String, $password: String!, $isActivated: Boolean ) {
       registerUser(
         ifunumber: $ifunumber
         phonenumber: $phonenumber

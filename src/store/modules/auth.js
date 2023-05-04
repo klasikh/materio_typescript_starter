@@ -114,7 +114,8 @@ const actions = {
             { from: "CREP", to: response.data.data.registerUser.phonenumber, message: `Votre code de confirmation est : ${codeRand}`, dlr: 1, type: 0 },
             { headers: { 'Content-Type': 'application/json' } }
           )
-          router.push({ name: "codeValidation" });
+          // router.push({ name: "codeValidation" });
+          router.push({ name: "registerSuccess" });
 
         }
       })
@@ -219,13 +220,13 @@ const mutations = {
       token: data.token,
       refreshToken: randomNumber + data.token + randNumber,
       tokenExp: jwtDecodedValue.exp,
-      userId: data.user._id,
+      // userId: data.user._id,
       // userName: jwtDecodedValue.username,
     };
 
-    data.user._id = state.authData.userId;
+    // data.user._id = state.authData.userId;
     // data.user.ifuId._id = state.authData.ifuId;
-    data.user.ifunumber = state.authData.ifuNumber;
+    // data.user.ifunumber = state.authData.ifuNumber;
 
     state.authData = newTokenData;
   },
